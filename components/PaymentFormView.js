@@ -22,7 +22,7 @@ export default class PaymentFormView extends React.Component {
         </View>
         <View style={styles.buttonWrapper}>
           <Button
-            title='Subscribe'
+            title='Donate'
             disabled={!this.state.cardData.valid || submitted}
             onPress={() => onSubmit(this.state.cardData)}
           />

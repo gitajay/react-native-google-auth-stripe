@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier **/components/*.js",
+    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
   },
   "dependencies": {
     "firebase": "^6.2.3",
@@ -12,6 +14,7 @@
     "react-native": "0.59.9",
     "react-native-elements": "^1.1.0",
     "react-native-google-signin": "^2.0.0",
+    "react-native-navigation": "^2.22.0",
     "react-native-router-flux": "^4.0.6",
     "react-native-vector-icons": "^6.5.0",
     "tipsi-stripe": "^7.5.0"
@@ -22,6 +25,7 @@
     "babel-jest": "^24.8.0",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.54.1",
+    "prettier": "1.18.2",
     "react-native-credit-card-input": "^0.4.1",
     "react-native-keyboard-spacer": "^0.4.1",
     "react-test-renderer": "16.8.3"

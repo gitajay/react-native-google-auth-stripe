@@ -32,16 +32,17 @@ const Routes = () => {
 
    return (
       <Router>
-         <Drawer key="drawer" drawer contentComponent={DefaultDrawer} drawerWidth={220} >
-            <Scene key = "root">
+         
+            <Stack key = "root">
+            
                <Scene key = "home" component = {Home} title = "Home" initial = {true} hideNavBar={true} />
-               
+               <Drawer key="drawer" drawer contentComponent={DefaultDrawer} drawerWidth={220} >   
                <Scene key = "donate" component = {AddSubscription} title = "Donate Us" />
                <Scene key = "addUser" component = {AddUser} title = "Add User" />
                <Scene key = "viewUsers" component = {ViewUsers} title = "View Users" />
-               
-            </Scene>
-         </Drawer>
+               </Drawer>
+            </Stack>
+         
       </Router>
    )
 }

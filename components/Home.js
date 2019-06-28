@@ -1,7 +1,7 @@
 import React from 'react'
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { Image } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import {
     GoogleSignin,
     GoogleSigninButton,
@@ -58,7 +58,7 @@ export default class Home extends React.Component {
         //Always resolves to true on iOS.
         showPlayServicesUpdateDialog: true,
       });
-      await GoogleSignin.configure()
+      //await GoogleSignin.configure()
       const userInfo = await GoogleSignin.signIn();
       _storeData('userInfo', userInfo)
       //console.warn('User Info --> ', userInfo);
@@ -106,17 +106,24 @@ export default class Home extends React.Component {
       console.error(error);
     }
   };
-  MyButton = () => (
-    <Icon.Button name="facebook" solid>
-      Login with Facebook
-    </Icon.Button>
+  MyAvatar = (url) => (
+    <Image
+        source={{ uri: url }}
+        style={{ width: 200, height: 200 }}
+        PlaceholderContent={<ActivityIndicator />}
+    />
   );
   render() {
     const { userInfo } = this.state
+    // console.warn(userInfo ? userInfo.user.photo : null)
     if(userInfo)
         return (
             <View style={styles.container}>
-                <this.MyButton />
+                <Image
+                    source={{ uri: userInfo.user.photo }}
+                    style={{ width: 200, height: 200 }}
+                    PlaceholderContent={<ActivityIndicator />}
+                />
                 <Text>{`Successfully Logged bro! ${userInfo.user.name}`}</Text>
                 <TouchableOpacity style = {[styles.buttonStyle]} onPress = {goToHome}>
                     <Text>Logout</Text>
